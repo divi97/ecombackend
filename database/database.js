@@ -1,5 +1,6 @@
 const mysql = require('mysql');
 const config = require('../constants/config')
+const { promisify } = require("util");
 
 const database = {
     host: config.DATABASE_HOST,
@@ -26,5 +27,7 @@ pool.getConnection((err, connection) => {
     console.log("DB is Connected Successfully!!");
     return;
 });
+
+pool.query = promisify(pool.query);
 
 module.exports = pool;

@@ -7,16 +7,15 @@ const PORT = 3000;
 
 const app = express();
 
-// ROUTES use
-const routes = require('./routes/routes');
-
 app.use(cors());
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
 
 // ROUTES use
-app.use('/', routes);
+require('./routes/routes')(app)
 
 app.listen(PORT, () => {
     console.log('Server is running on port:' + PORT)
 })
+
+module.exports = app
