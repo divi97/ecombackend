@@ -16,7 +16,7 @@ exports.getAllProducts = async (req, res, next) => {
         })
 
     } catch (error) {
-        console.log(error.message)
+        res.status(404).json({ error });
     }
 };
 
@@ -33,6 +33,6 @@ exports.getProduct = async (req, res, next) => {
             product
         })
     } catch (error) {
-        console.log(error.message)
+        res.status(404).json({ error });
     }
 };

@@ -14,7 +14,7 @@ exports.deleteCustomer = async (req, res, next) => {
                 message: "Requested customer does not exist" })
         }
     } catch (error) {
-        console.log(error.message)
+        res.status(404).json({ error });
     }
 
 };

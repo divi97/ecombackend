@@ -13,6 +13,6 @@ exports.getOrder = async (req, res, next) => {
             order
         })
     } catch (error) {
-        console.log(error.message)
+        res.status(404).json({ error });
     }
 };

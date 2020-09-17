@@ -16,6 +16,6 @@ exports.removeAllCustomers = async (req, res, next) => {
         }
 
     } catch (error) {
-        console.log(error.message)
+        res.status(404).json({ error });
     }
 };

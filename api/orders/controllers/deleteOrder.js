@@ -14,6 +14,6 @@ exports.deleteOrder = async (req, res, next) => {
                 message: "Requested order does not exist" })
         }
     } catch (error) {
-        console.log(error.message)
+        res.status(404).json({ error });
     }
 };

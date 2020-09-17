@@ -14,6 +14,6 @@ exports.deleteProduct = async (req, res, next) => {
                 message: "Requested product does not exist" })
         }
     } catch (error) {
-        console.log(error.message)
+        res.status(404).json({ error });
     }
 };

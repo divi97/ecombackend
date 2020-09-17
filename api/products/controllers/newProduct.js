@@ -9,7 +9,7 @@ exports.createProduct = async (req, res, next) => {
         // console.log(product)
 
         if (!product) {
-            await pool.query(`INSERT INTO customers SET ?`, [
+            await pool.query(`INSERT INTO products SET ?`, [
                 {
                     productName: req.body.productName,
                     brand: req.body.brand,
@@ -27,7 +27,7 @@ exports.createProduct = async (req, res, next) => {
                 message: "Product already exists, Enter a different product name"
             })
         }
-    } catch (err) {
-        console.log(err.message, 400);
+    } catch (error) {
+        res.status(404).json({ error });
     }
 };

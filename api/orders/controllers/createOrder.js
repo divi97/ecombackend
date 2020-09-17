@@ -4,6 +4,9 @@ const date = new Date();
 exports.createOrder = async (req, res, next) => {
     //API to create a Order
     try {
+        // if condition if product or customer exists
+
+
         const quantity = await pool.query(`SELECT quantityInventory from products WHERE productId=?`, [req.body.productId]);
         quantity = (quantity - req.body.quantityPurchased)
 
@@ -24,6 +27,6 @@ exports.createOrder = async (req, res, next) => {
         });
 
     } catch (error) {
-        console.log(error.message)
+        res.status(404).json({ error });
     }
 };

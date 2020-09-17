@@ -15,7 +15,7 @@ exports.getAllCustomers = async (req, res, next) => {
         })
 
     } catch (error) {
-        console.log(error.message)
+        res.status(404).json({ error });
     }
 };
 
@@ -32,6 +32,6 @@ exports.getCustomer = async (req, res, next) => {
             customer
         })
     } catch (error) {
-        console.log(error.message)
+        res.status(404).json({ error });
     }
 };
