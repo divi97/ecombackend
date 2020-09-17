@@ -46,5 +46,21 @@ exports.specificCustomer = async (req, res, next) => {
 
 exports.mostPurchased = async (req, res, next) => {
     //API to get list of most purchsed products in descending order
-    
+    try {
+        const result = await db.query("SELECT productId FROM orders GROUP BY productId ORDER BY COUNT(quantityPurchsed) DESC");
+        // console.log('res', result)
+        
+        var abc = []
+        for (i of result) {
+            const result1 = await db.query("SELECT * from products WHERE productId=?", [i.productId])
+            console.log(result1[0])
+            abc.push(result1[0])
+        }
+        return res.status(200).json({
+            message : "Product details fetched successfully!",
+            abc
+        });
+    } catch (error) {
+        res.status(404).json({ error })
+    }
 };
